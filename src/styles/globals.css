@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  color: white;
+  scroll-behavior: smooth;
+
+  @apply bg-background;
+}
+
+@layer utilities {
+  .textHover {
+    @apply hover:bg-cyan-800/20 hover:text-[hsl(200,100%,60%)];
+  }
+
+  .sidebarItem svg {
+    @apply text-zinc-500     transition-colors duration-75;
+  }
+
+  .shiny {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero {
+    height: 10%;
+    width: 100%;
+    background-image: radial-gradient(
+      circle farthest-side at var(--x, 100px) var(--y, 100px),
+      rgb(22 78 99) 0%,
+      transparent 100%
+    );
+  }
+
+  .shiny::after {
+    content: "";
+    z-index: 10;
+    position: absolute;
+    top: calc(var(--y, 0) * 1px - 20px);
+    left: calc(var(--x, 0) * 1px - 20px);
+    width: 30px;
+    height: 30px;
+    background: rgb(83, 14, 194);
+
+    opacity: 0;
+    transition: opacity 1s;
+    border-radius: 100%;
+    @apply pointer-events-none;
+  }
+
+  .shiny:hover::after {
+    opacity: 0.4;
+  }
+}
+
+@layer base {
+  * {
+    min-width: 0;
+
+    @apply border-border;
+  }
+  button {
+    cursor: pointer;
+  }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 5.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 24.6 95% 53.1%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 90.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 90.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 24.6 95% 53.1%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240, 4%, 16%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 240, 6%, 10%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 20.5 90.2% 48.2%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 240, 5%, 26%, 60%;
+
+    --muted: 240, 5%, 26%, 60%;
+
+    --accent: 240, 5%, 26%, 60%;
+
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 20.5 90.2% 48.2%;
+  }
+
+  .dropdown-button:focus-visible {
+    @apply shadow-none;
+  }
+
+  .card:focus-visible {
+    @apply shadow-none;
+  }
+
+  button:focus,
+  li:focus-visible,
+  a:focus {
+    outline: none;
+
+    @apply shadow-none;
+  }
+
+  button:focus-visible,
+  li:focus-visible,
+  a:focus-visible {
+    outline: none;
+
+    @apply shadow-[0_0_0_2px] shadow-ring;
+  }
+}
