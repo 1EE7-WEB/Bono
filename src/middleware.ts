@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export default authMiddleware({
   // this is for development
-  publicRoutes: ["((?!^/asdasdasdasd/).*)"],
+  publicRoutes: ["/landing"],
 });
 const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],

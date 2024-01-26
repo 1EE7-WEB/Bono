@@ -6,12 +6,11 @@ import { LogIn } from "lucide-react";
 import { ModeToggle } from "~/components/theme/modeToggle";
 
 export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
-  console.log(expandSidebar);
   return (
     <nav
       className={` ${
         expandSidebar ? "w-64" : "w-20 justify-center"
-      }  border-r border-r-border bg-popover transition-transform dark:border-r-0 sm:translate-x-0`}
+      }   border-r border-r-border bg-popover transition-transform dark:border-r-0 sm:translate-x-0`}
       aria-label="Sidebar"
     >
       <div className="flex h-full flex-col justify-between overflow-y-auto   px-3 py-4">
@@ -104,24 +103,18 @@ function CTA({ expandSidebar }: { expandSidebar: boolean }) {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              strokeWidth="2"
               d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
             />
           </svg>
         </button>
       </div>
       <p className="mb-3 text-sm text-blue-800 dark:text-blue-400">
-        Preview the new Flowbite dashboard navigation! You can turn the new
-        navigation off for a limited time in your profile.
+        Since this site is made purely for demonstration purposes, the prices
+        and delivery are not ready yet.
       </p>
-      <a
-        className="text-sm font-medium text-blue-800 underline hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
-        href="#"
-      >
-        Turn new navigation off
-      </a>
     </div>
   );
 }

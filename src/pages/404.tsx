@@ -16,7 +16,7 @@ export default function Custom404() {
         </div>
 
         <div className="mt-6 flex   items-center gap-3">
-          <Link href="/">
+          <Link href="/ ">
             <Button className="py-6 text-lg" size={"lg"}>
               Return to Home
             </Button>

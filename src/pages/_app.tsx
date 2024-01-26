@@ -12,11 +12,10 @@ import { ThemeProvider } from "~/components/theme/theme-provider";
 // i chose pages router here as its integration with tRPC is seemless.
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  const pathname = useRouter();
+  const router = useRouter();
 
-  console.log(pathname);
-  // if pathname is landing (landing page) or 1ee7 (organization landing page) dont use layout, else use layout.
-  return pathname.pathname === "/landing" ? (
+  // if router is landing (landing page) or 1ee7 (organization landing page) dont use layout, else use layout.
+  return router.pathname === "/landing" ? (
     <ClerkProvider>
       <Component {...pageProps} />
     </ClerkProvider>

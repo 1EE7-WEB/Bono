@@ -17,6 +17,7 @@ import React, { Dispatch } from "react";
 import { UserAvatar, Username } from "../ui/UserAttributes";
 import { SignOutButton } from "@clerk/nextjs";
 import { Pacifico } from "next/font/google";
+import { Search } from "./Search";
 
 const pasifico = Pacifico({
   subsets: ["latin"],
@@ -58,16 +59,10 @@ function NavbarLayout({
         </div>
 
         <div className="  flex-[0.4]">
-          <Input placeholder="Search" className=" " />
+          <Search />
         </div>
 
         <div className="flex flex-[0.3]  items-center justify-end gap-4">
-          <div className=" hidden items-center gap-4 lg:flex">
-            <NavbarItem href="/track" title={"tracker"} />
-            <NavbarItem href="/exercises" title={"exercises"} />
-            <NavbarItem href="/track" title={"statistics"} />
-          </div>
-
           {/* these components come from shadcn, a headless UI library that gives you all the control */}
           <DropdownMenu>
             <DropdownMenuTrigger className="ml-1 h-10 w-10">

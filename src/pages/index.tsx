@@ -12,38 +12,27 @@ import Layout from "~/components/layout/Layout";
 import Section from "~/components/ui/Section";
 import { useQuery } from "@tanstack/react-query";
 import useArrayState from "~/hooks/useArrayState";
+import { filterRecipesByTag, recipes } from "../recipes";
+import { TypographyH1 } from "~/components/typography/TypographyH1";
+import Link from "next/link";
+import { Pacifico } from "next/font/google";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+
+const pasifico = Pacifico({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 function App() {
-  const [a, setA] = useArrayState();
-  const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: async () => {
-      const url =
-        "https://yummly2.p.rapidapi.com/feeds/auto-complete?q=chicken%20soup";
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key":
-            "664c34bfcemsh5eec36ddeca6590p1e66f1jsn34d5ef06e779",
-          "X-RapidAPI-Host": "yummly2.p.rapidapi.com",
-        },
-      };
+  const handPicked = filterRecipesByTag("hand-picked");
+  const vegeterian = filterRecipesByTag("vegetarian");
+  const baking = filterRecipesByTag("baking");
 
-      try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  });
-
-  if (isPending) return "Loading...";
+  //id as title works because this array has no same title and is completely unique
 
   return (
     <div>
-      {" "}
       <Section
         title={
           <>
@@ -53,90 +42,84 @@ function App() {
         }
         subTitle={<>Our most savory and favored meals!</>}
       >
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>{" "}
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
+        {handPicked.map((item) => (
+          <CarouselItem
+            key={item.title}
+            className=" basis-[95%] pl-2 md:basis-auto"
+          >
+            {" "}
+            <div className="p-1">
+              <FoodCard
+                tag={item.tags[0] ? item.tags[0] : ""}
+                author="Bono"
+                imageHref={item.image}
+                price={item.priceText}
+                title={item.title}
+              />
+            </div>
+          </CarouselItem>
+        ))}
       </Section>
-      <div className="py-12"></div>
-      {/* <Section
+
+      <div className=" my-16 "></div>
+      <Section
         title={
           <>
-            <span className="text-primary">Most </span>
-            Popular
+            <span className="text-primary">Vegetarian </span>
+            Choices
           </>
         }
-        subTitle={<>Our most savory and favored meals!</>}
+        subTitle={<>For all of our vegetarian users!</>}
       >
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>{" "}
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-        <CarouselItem className=" basis-[95%] pl-2 md:basis-auto">
-          {" "}
-          <div className="p-1">
-            <FoodCard />
-          </div>
-        </CarouselItem>
-      </Section> */}
+        {vegeterian.map((item) => (
+          <CarouselItem
+            key={item.title}
+            className=" basis-[95%] pl-2 md:basis-auto"
+          >
+            {" "}
+            <div className="p-1">
+              <FoodCard
+                tag={item.tags[0] ? item.tags[0] : ""}
+                author="Bono"
+                imageHref={item.image}
+                price={item.priceText}
+                title={item.title}
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </Section>
+      <div className="py-12"></div>
+
+      <Section
+        title={
+          <>
+            <span className="text-primary">Baking </span>
+            Choices
+          </>
+        }
+        subTitle={
+          <>Pop it in the oven and get some of that delicious goodness!</>
+        }
+      >
+        {baking.map((item) => (
+          <CarouselItem
+            key={item.title}
+            className=" basis-[95%] pl-2 md:basis-auto"
+          >
+            {" "}
+            <div className="p-1">
+              <FoodCard
+                tag={item.tags[0] ? item.tags[0] : ""}
+                author="Bono"
+                imageHref={item.image}
+                price={item.priceText}
+                title={item.title}
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </Section>
     </div>
   );
 }
