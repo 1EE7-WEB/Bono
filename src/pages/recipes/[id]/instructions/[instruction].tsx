@@ -82,8 +82,6 @@ function Page() {
     await router.push("/ ");
   }
 
-  if (!foundRecipe) console.error("no found recipe");
-
   return (
     <div className="flex h-full  flex-col">
       <div className="flex  gap-2">

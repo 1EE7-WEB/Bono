@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { useRouter } from "next/router";
 import React from "react";
 import { TypographyH2 } from "~/components/typography/TypographyH2";
@@ -11,17 +13,11 @@ function Page() {
 
   function capitalizeTitle() {
     // Split the string into an array of words
-    const words = tagName.split("-");
 
     // Capitalize the first letter of each word
-    const capitalizedWords = words.map(
-      (word) => word.charAt(0).toUpperCase() + word.slice(1),
-    );
-
-    // Join the words back together with a space
-    const result = capitalizedWords.join(" ");
-
-    return result;
+    const capitalizedWords =
+      tagName?.charAt(0).toUpperCase() + tagName?.slice(1);
+    return capitalizedWords;
   }
 
   const title = capitalizeTitle();

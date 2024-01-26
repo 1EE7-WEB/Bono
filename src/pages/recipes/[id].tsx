@@ -14,7 +14,7 @@ function Page() {
   });
 
   const ingredients: { name: string; id: string; price: number }[] = foundRecipe
-    ? foundRecipe.ingredients!.map((ingredient) => {
+    ? foundRecipe.ingredients.map((ingredient) => {
         const uniqueId = Math.ceil(Math.random() * 1000000000).toString();
         return {
           name: ingredient.name,
@@ -23,8 +23,6 @@ function Page() {
         };
       })
     : [{ name: "", id: "", price: 0 }];
-
-  if (!foundRecipe) console.error("no found recipe");
 
   return (
     <div className="">
