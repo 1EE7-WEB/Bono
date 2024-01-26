@@ -2,7 +2,7 @@ import { SignInButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import Avatar, { UserAvatar } from "../ui/UserAttributes";
-import { Circle, Home, HomeIcon, LogIn } from "lucide-react";
+import { Circle, Home, HomeIcon, LeafyGreen, LogIn } from "lucide-react";
 import { ModeToggle } from "~/components/theme/modeToggle";
 
 export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
@@ -10,8 +10,11 @@ export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
     "lunch",
     "sides",
     "soups",
-    "salad",
+    "meat",
     "vegetarian",
+    "dessert",
+
+    "fancy",
     "party",
     "breakfast",
   ];
@@ -37,7 +40,7 @@ export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
             return (
               <SidebarItem
                 key={item}
-                icon={<Circle />}
+                icon={<LeafyGreen />}
                 title={item}
                 expandSidebar={expandSidebar}
                 href={`/tags/${item}`}
