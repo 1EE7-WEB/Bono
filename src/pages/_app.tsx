@@ -27,7 +27,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         enableSystem
         disableTransitionOnChange
       >
-        <AnimatePresence wait={true}>
+        <AnimatePresence>
           <Layout>
             <Component {...pageProps} />
           </Layout>

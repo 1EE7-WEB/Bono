@@ -7,15 +7,13 @@ import { ModeToggle } from "~/components/theme/modeToggle";
 
 export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
   const a = [
-    "breakfast",
     "lunch",
-    "dinner",
     "sides",
     "soups",
-    "diet",
+    "salad",
     "vegetarian",
     "party",
-    "grill",
+    "breakfast",
   ];
 
   return (
@@ -42,7 +40,7 @@ export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
                 icon={<Circle />}
                 title={item}
                 expandSidebar={expandSidebar}
-                href={`tags/${item}`}
+                href={`/tags/${item}`}
               />
             );
           })}
