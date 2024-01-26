@@ -28,12 +28,14 @@ function App() {
   const handPicked = filterRecipesByTag("hand-picked");
   const vegeterian = filterRecipesByTag("vegetarian");
   const baking = filterRecipesByTag("baking");
+  const sides = filterRecipesByTag("sides");
 
   //id as title works because this array has no same title and is completely unique
 
   return (
     <div>
       <Section
+        tagHref="hand-picked"
         title={
           <>
             <span className="text-primary">Most </span>
@@ -63,6 +65,7 @@ function App() {
 
       <div className=" my-16 "></div>
       <Section
+        tagHref="vegetarian"
         title={
           <>
             <span className="text-primary">Vegetarian </span>
@@ -92,6 +95,7 @@ function App() {
       <div className="py-12"></div>
 
       <Section
+        tagHref="baking"
         title={
           <>
             <span className="text-primary">Baking </span>
@@ -103,6 +107,36 @@ function App() {
         }
       >
         {baking.map((item) => (
+          <CarouselItem
+            key={item.title}
+            className=" basis-[95%] pl-2 md:basis-auto"
+          >
+            {" "}
+            <div className="p-1">
+              <FoodCard
+                tag={item.tags[0] ? item.tags[0] : ""}
+                author="Bono"
+                imageHref={item.image}
+                price={item.priceText}
+                title={item.title}
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </Section>
+      <div className="py-12"></div>
+
+      <Section
+        tagHref="sides"
+        title={
+          <>
+            <span className="text-primary">Side </span>
+            Dishes
+          </>
+        }
+        subTitle={<>Eat some sides boy</>}
+      >
+        {sides.map((item) => (
           <CarouselItem
             key={item.title}
             className=" basis-[95%] pl-2 md:basis-auto"

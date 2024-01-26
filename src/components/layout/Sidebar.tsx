@@ -2,10 +2,22 @@ import { SignInButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import Avatar, { UserAvatar } from "../ui/UserAttributes";
-import { LogIn } from "lucide-react";
+import { Circle, Home, HomeIcon, LogIn } from "lucide-react";
 import { ModeToggle } from "~/components/theme/modeToggle";
 
 export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
+  const a = [
+    "breakfast",
+    "lunch",
+    "dinner",
+    "sides",
+    "soups",
+    "diet",
+    "vegetarian",
+    "party",
+    "grill",
+  ];
+
   return (
     <nav
       className={` ${
@@ -18,23 +30,22 @@ export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
           <SidebarItem
             href="/"
             expandSidebar={expandSidebar}
-            title="Dashboard"
-            icon={
-              <svg
-                //group hover has to be repeated here as it cannot be referenced in the css file
-                className="  group-hover:text-foreground"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 21 21"
-              >
-                <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-              </svg>
-            }
+            title="Home"
+            icon={<HomeIcon />}
           />
 
           <ModeToggle expandSidebar={expandSidebar} />
+          {a.map((item) => {
+            return (
+              <SidebarItem
+                key={item}
+                icon={<Circle />}
+                title={item}
+                expandSidebar={expandSidebar}
+                href={`tags/${item}`}
+              />
+            );
+          })}
         </ul>
 
         <CTA expandSidebar={expandSidebar} />

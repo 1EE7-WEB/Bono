@@ -77,9 +77,9 @@ function NavbarLayout({
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem disabled>Profile</DropdownMenuItem>
+              <DropdownMenuItem disabled>Billing</DropdownMenuItem>
+              <DropdownMenuItem disabled>Team</DropdownMenuItem>
               <SignOutButton>
                 <DropdownMenuItem>
                   Log Out{" "}

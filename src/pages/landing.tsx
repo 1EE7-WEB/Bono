@@ -2,6 +2,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Pacifico } from "next/font/google";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 const pasifico = Pacifico({
   subsets: ["latin"],
@@ -150,13 +152,22 @@ export default function Home() {
           initial="hidden"
           animate="show"
         >
-          <motion.h1
-            className="z-10 text-9xl font-semibold tracking-tighter text-yellow-200"
+          <motion.div
+            className="relative z-10 flex flex-col text-9xl font-semibold tracking-tighter text-yellow-200"
             variants={textAnimate2}
             custom={100}
           >
             EXPERIENCE
-          </motion.h1>
+            <Link href={"/"}>
+              <Button
+                size={"lg"}
+                variant={"ghost"}
+                className="absolute -bottom-20 left-[30%] max-w-min py-8 text-4xl text-white hover:bg-primary  hover:text-white "
+              >
+                Order <ChevronRight className="mt-2"></ChevronRight>
+              </Button>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </main>

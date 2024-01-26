@@ -6,19 +6,24 @@ import {
 } from "@/components/ui/carousel";
 import React, { ReactNode } from "react";
 import { TypographyH2 } from "../typography/TypographyH2";
+import Link from "next/link";
 
 function Section({
   children,
   title,
   subTitle,
+  tagHref,
 }: {
   children: ReactNode;
   title: ReactNode;
+  tagHref: string;
   subTitle: ReactNode;
 }) {
   return (
     <div className="">
-      <TypographyH2>{title}</TypographyH2>
+      <Link href={`tags/${tagHref}`}>
+        <TypographyH2>{title}</TypographyH2>
+      </Link>
 
       <p className="italic text-muted-foreground">{subTitle}</p>
 

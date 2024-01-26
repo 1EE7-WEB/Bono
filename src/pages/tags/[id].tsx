@@ -1,4 +1,3 @@
-import { CarouselItem } from "@/components/ui/carousel";
 import { useRouter } from "next/router";
 import React from "react";
 import { TypographyH2 } from "~/components/typography/TypographyH2";
@@ -7,7 +6,25 @@ import { filterRecipesByTag } from "~/recipes";
 
 function Page() {
   const router = useRouter();
-  const recipes = filterRecipesByTag(router.query.id as string);
+  const tagName = router.query.id as string;
+  const recipes = filterRecipesByTag(tagName);
+
+  function capitalizeTitle() {
+    // Split the string into an array of words
+    const words = tagName.split("-");
+
+    // Capitalize the first letter of each word
+    const capitalizedWords = words.map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1),
+    );
+
+    // Join the words back together with a space
+    const result = capitalizedWords.join(" ");
+
+    return result;
+  }
+
+  const title = capitalizeTitle();
 
   return (
     <div className="">
@@ -17,12 +34,9 @@ function Page() {
         Check these awesome {router.query.id} themed recipes out
       </p>
 
-      <div className="mt-3 flex w-full justify-center">
+      <div className="mt-3 flex w-full flex-wrap justify-center  gap-4">
         {recipes.map((item) => (
-          <CarouselItem
-            key={item.title}
-            className=" basis-[95%] pl-2 md:basis-auto"
-          >
+          <div key={item.title} className=" mt-4 pl-2 md:basis-auto">
             {" "}
             <div className="p-1">
               <FoodCard
@@ -33,7 +47,7 @@ function Page() {
                 title={item.title}
               />
             </div>
-          </CarouselItem>
+          </div>
         ))}
       </div>
     </div>
