@@ -23,7 +23,7 @@ const pasifico = Pacifico({
   subsets: ["latin"],
   weight: "400",
 });
-
+console.log("a");
 function App() {
   const handPicked = filterRecipesByTag("hand-picked");
   const vegeterian = filterRecipesByTag("vegetarian");
