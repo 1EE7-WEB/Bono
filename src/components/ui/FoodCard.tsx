@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 import {
   Card,
   CardContent,
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/tooltip";
 import Link from "next/link";
 
-function FoodCard({
+const FoodCard = memo(function FoodCard({
   title,
   imageHref,
   tag,
@@ -80,6 +80,6 @@ function FoodCard({
       </CardFooter>
     </Card>
   );
-}
+});
 
 export default FoodCard;

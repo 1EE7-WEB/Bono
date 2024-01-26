@@ -23,7 +23,7 @@ export function Sidebar({ expandSidebar }: { expandSidebar: boolean }) {
     <nav
       className={` ${
         expandSidebar ? "w-64" : "w-20 justify-center"
-      }   border-r border-r-border bg-popover transition-transform dark:border-r-0 sm:translate-x-0`}
+      }   border-r border-r-border bg-popover transition-transform dark:border-r-0 sm:translate-x-0 `}
       aria-label="Sidebar"
     >
       <div className="flex h-full flex-col justify-between overflow-y-auto   px-3 py-4">
@@ -71,14 +71,21 @@ export function SidebarItem({
     <li>
       <Link
         href={href}
-        className={`sidebarItem group flex items-center rounded-md p-2 transition duration-200     ${
+        className={`sidebarItem group relative z-10  flex items-center rounded-md p-2 transition duration-200     ${
           expandSidebar ? " scale-100  active:scale-95" : "justify-center"
         }  hover:bg-muted`}
       >
         <div className="flex !h-6 !w-6 items-center justify-center">{icon}</div>
         {expandSidebar ? (
           <span className="ms-3 capitalize">{title}</span>
-        ) : null}
+        ) : (
+          <div
+            className=" absolute   left-12 z-50 hidden min-w-max 
+      items-center rounded-md bg-zinc-200 p-2 px-3 dark:bg-zinc-900  "
+          >
+            {title}
+          </div>
+        )}
       </Link>
     </li>
   );
