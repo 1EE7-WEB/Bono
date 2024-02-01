@@ -21,6 +21,7 @@ function Delivery() {
     if ("geolocation" in navigator) {
       // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
       navigator.geolocation.getCurrentPosition(({ coords }) => {
+        console.log(coords);
         const { latitude, longitude } = coords;
         setLocation({ lat: latitude, lng: longitude });
       });
@@ -34,7 +35,7 @@ function Delivery() {
         Our couriers will deliver your purchase shortly!
       </div>
       {location ? (
-        <Map location={location} zoomLevel={17} />
+        <Map location={location} zoomLevel={19} />
       ) : (
         <div className="h-[70vh] bg-muted"> </div>
       )}

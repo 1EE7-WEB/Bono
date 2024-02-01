@@ -78,7 +78,7 @@ export function FormIngredients({
   async function checkIngredients() {
     //it doesnt matter if the user can go to the instructions straight up, since its just a recipe app.
     //return early if all ingredients present
-    if (ticked.length === ingredients.length) {
+    if (ticked?.length === ingredients.length) {
       setCheckoutDialogue(false);
 
       await goToIngredients();
@@ -86,7 +86,7 @@ export function FormIngredients({
       return;
     }
 
-    if (ticked.length === 0) {
+    if (ticked?.length === 0) {
       //because already error exists for that
 
       return;
@@ -101,7 +101,7 @@ export function FormIngredients({
   }
 
   function unusedIngredients() {
-    return ingredients.filter((obj) => !ticked.includes(obj.name));
+    return ingredients.filter((obj) => !ticked?.includes(obj.name));
   }
 
   async function goToCheckout() {
@@ -182,7 +182,7 @@ export function FormIngredients({
         />
 
         <div className="flex justify-between">
-          {ticked.length === ingredients.length ? (
+          {ticked?.length === ingredients.length ? (
             <Button type="submit" className="gap-1">
               Continue <ChevronRight size={16} />
             </Button>
@@ -198,7 +198,7 @@ export function FormIngredients({
           >
             <Button
               type="submit"
-              disabled={ticked.length === ingredients.length}
+              disabled={ticked?.length === ingredients.length}
               variant={"outline"}
             >
               Skip{" "}

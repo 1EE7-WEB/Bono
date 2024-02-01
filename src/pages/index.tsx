@@ -1,28 +1,9 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { CarouselItem } from "@/components/ui/carousel";
 import React from "react";
-import { TypographyH2 } from "~/components/typography/TypographyH2";
 import FoodCard from "~/components/ui/FoodCard";
-import Layout from "~/components/layout/Layout";
 import Section from "~/components/ui/Section";
-import { useQuery } from "@tanstack/react-query";
-import useArrayState from "~/hooks/useArrayState";
-import { filterRecipesByTag, recipes } from "../recipes";
-import { TypographyH1 } from "~/components/typography/TypographyH1";
-import Link from "next/link";
-import { Pacifico } from "next/font/google";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { filterRecipesByTag } from "../recipes";
 
-const pasifico = Pacifico({
-  subsets: ["latin"],
-  weight: "400",
-});
 function App() {
   const handPicked = filterRecipesByTag("hand-picked");
   const vegeterian = filterRecipesByTag("vegetarian");
