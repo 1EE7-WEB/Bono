@@ -23,7 +23,6 @@ const pasifico = Pacifico({
   subsets: ["latin"],
   weight: "400",
 });
-console.log("aasdsdfaasdasdsd");
 function App() {
   const handPicked = filterRecipesByTag("hand-picked");
   const vegeterian = filterRecipesByTag("vegetarian");
@@ -109,7 +108,7 @@ function App() {
         {baking.map((item) => (
           <CarouselItem
             key={item.title}
-            className=" basis-[95%] pl-2 md:basis-auto"
+            className=" basis-[95%]  pl-2 md:basis-auto"
           >
             {" "}
             <div className="p-1">

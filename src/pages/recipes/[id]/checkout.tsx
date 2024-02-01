@@ -67,7 +67,7 @@ function Checkout() {
           >
             Recipe
           </Link>{" "}
-          / <span className="">Checkout</span>
+          / <span className="">{foundRecipe.title}</span>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ function Checkout() {
                   </div>
                   <div className="flex-grow pl-3">
                     <h6 className="font-semibold uppercase ">
-                      {foundRecipe?.title}
+                      {foundRecipe.title}
                     </h6>
                     <p className="">x 1</p>
                   </div>

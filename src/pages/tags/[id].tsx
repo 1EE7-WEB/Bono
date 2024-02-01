@@ -26,7 +26,7 @@ function Page() {
     <div className="">
       <TypographyH2>{title}</TypographyH2>
 
-      <p className="italic text-muted-foreground">
+      <p className="italic  text-muted-foreground">
         Check these awesome {router.query.id} themed recipes out
       </p>
 

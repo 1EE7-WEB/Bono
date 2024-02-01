@@ -27,7 +27,9 @@ function Delivery() {
   return (
     <div>
       <TypographyH2>Order taken successfully!!</TypographyH2>{" "}
-      <div className="py-2"></div>
+      <div className="mb-4 text-muted-foreground">
+        Our couriers will deliver your purchase shortly!
+      </div>
       {location ? (
         <Map location={location} zoomLevel={17} />
       ) : (

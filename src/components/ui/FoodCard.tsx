@@ -34,6 +34,7 @@ const FoodCard = memo(function FoodCard({
     <Card className="  rounded-xl md:max-w-xs    ">
       <CardHeader className="relative  mb-3 h-64 w-full">
         <Image
+          sizes="(max-width: 768px) 318px, (max-width: 1200px) 318px"
           src={imageHref}
           className=" h-64  w-full   rounded-t-xl  object-cover"
           alt="a"

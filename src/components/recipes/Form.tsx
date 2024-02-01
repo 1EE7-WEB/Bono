@@ -203,6 +203,7 @@ export function FormIngredients({
             >
               Skip{" "}
             </Button>
+
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you sure?</AlertDialogTitle>

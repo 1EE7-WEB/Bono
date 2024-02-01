@@ -1,3 +1,5 @@
+import useArrayState from "./hooks/useArrayState";
+
 export const recipes = [
   {
     title: "Banana Bread",
@@ -1360,8 +1362,9 @@ const allTags = [
 ];
 
 export function filterRecipesByTag(tag: string) {
-  // Ensure the input is valid
   const filtered = recipes.filter((recipe) => recipe.tags.includes(tag));
+
+  // Ensure the input is valid
   return filtered;
 }
 // //one of the functions used to generate the array
