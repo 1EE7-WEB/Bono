@@ -10,7 +10,10 @@ const location2 = {
   lng: -122.08427,
 };
 function Delivery() {
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState<{
+    lat: number;
+    lng: number;
+  }>();
 
   console.log(location);
 
